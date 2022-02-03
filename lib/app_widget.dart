@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrsaver/Screen/HomeScreen/home_screen.dart';
 import 'package:qrsaver/Screen/LoginScreen/login_screen.dart';
 import 'package:qrsaver/Screen/SplashScreen/splash_screen.dart';
 
@@ -15,6 +16,7 @@ class AppWidget extends StatelessWidget {
       routes: {
       '/': (context) => const SplashPage(),
       '/loginscreen': (context) => const LoginScreen(),
+      '/homescreen': (context) => const HomeScreen()
       },
     );
   }

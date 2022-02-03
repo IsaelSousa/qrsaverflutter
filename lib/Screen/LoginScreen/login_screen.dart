@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qrsaver/modules/styles/app_colors.dart';
-import 'package:qrsaver/modules/styles/app_images.dart';
+import 'package:qrsaver/Screen/LoginScreen/login_controller.dart';
+import 'package:qrsaver/shared/styles/app_colors.dart';
+import 'package:qrsaver/shared/styles/app_images.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({ Key? key }) : super(key: key);
@@ -13,6 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final login = LoginController();
 
     return Container(
       color: AppColors.primary,
@@ -34,7 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
               bottom: 50,
               child: GestureDetector(
                 onTap: () {
-                  print("Só testando");
+                  login.googleSignIn(context);
+                  setState(() {});
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qrsaver/modules/styles/app_colors.dart';
-import 'package:qrsaver/modules/styles/app_images.dart';
+import 'package:qrsaver/shared/styles/app_colors.dart';
+import 'package:qrsaver/shared/styles/app_images.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({ Key? key }) : super(key: key);
