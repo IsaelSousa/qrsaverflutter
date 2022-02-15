@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qrsaver/app_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-
 void main() {
   runApp(const FireBaseApp());
 }
