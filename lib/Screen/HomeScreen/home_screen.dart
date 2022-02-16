@@ -16,9 +16,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return SafeArea(
       child: Scaffold(
+        
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
           child: Container(
+            color: AppColors.primary,
             height: 100,
             child: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
@@ -59,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: AppColors.background,
                             borderRadius: BorderRadius.all(Radius.circular(10))
                           ),
-                          child: Image.asset('assets/images/loggouticon.png', width: 37, height: 37,),
+                          child: Image.asset('assets/images/loggouticon.png', width: 30, height: 30,),
                         ),
                       )
 
@@ -68,21 +70,23 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.background,
+
         body: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            color: AppColors.background,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40),
-              topRight: Radius.circular(40)
-          ),
-        ),
-        child: Column(
-          children: [
+          color: AppColors.primary,
+          child: Container(
+            decoration: const BoxDecoration(
+              color: AppColors.background,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30)
+              )
+            ),
+            child: Column(
+              children: [
 
-            Container(
+            SizedBox(
               height: 100,
               child: Stack(
                 children: [
@@ -126,7 +130,56 @@ class _HomeScreenState extends State<HomeScreen> {
                 ]
               ),
             ),
-          ],
+
+              ],
+            ),
+          ),
+        ),
+      bottomNavigationBar: Container(
+        height: 100,
+        color: AppColors.background,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            bottom: 20
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+
+              Container(
+                height: 75,
+                width: 75,
+                decoration: const BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                child: const Center(
+                  child: Icon(Icons.add),
+                ),
+              ),
+
+              Container(
+                height: 75,
+                width: 75,
+                decoration: const BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+              ),
+
+              Container(
+                height: 75,
+                width: 75,
+                decoration: const BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+              )
+
+            ],
+          ),
         ),
       ),
       )
