@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qrsaver/Screen/LoginScreen/login_controller.dart';
 import 'package:qrsaver/shared/styles/app_colors.dart';
 import 'package:qrsaver/shared/styles/app_images.dart';
@@ -52,7 +53,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           bottomLeft: Radius.circular(30),
                           )
                       ),
-                      child: Image.asset(AppImages.googleicon),
+                      child: Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: SvgPicture.asset(
+                            AppImages.googleicon,
+                          ),
+                        ),
+                      ),
                     ),
                     Container(
                       width: 220,

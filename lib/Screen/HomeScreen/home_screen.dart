@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:qrsaver/shared/services/auth/auth_controller.dart';
 import 'package:qrsaver/shared/styles/app_colors.dart';
+import 'package:qrsaver/shared/styles/app_images.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({ Key? key }) : super(key: key);
@@ -11,8 +14,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+
     const text = 'Paje Da Tribo';
     final split = text.split(' ');
+
+    int qtd = 999;
 
     return SafeArea(
       child: Scaffold(
@@ -23,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             color: AppColors.primary,
             height: 100,
             child: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -32,21 +38,53 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 10),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20), // Image border
-                          child: SizedBox.fromSize(
-                          size: const Size.fromRadius(30), // Image radius
-                          child: Image.network('https://github.com/IsaelSousa.png', fit: BoxFit.cover),
-                            ),
+                        child: Container(
+                          decoration: BoxDecoration(
+
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.6),
+                                
+                                blurRadius: 20,
+                                offset: const Offset(0, 0),
+                              )
+                            ]
                           ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20), // Image border
+                            child: SizedBox.fromSize(
+                            size: const Size.fromRadius(35), // Image radius
+                            child: Image.network('https://github.com/IsaelSousa.png', fit: BoxFit.cover),
+                              ),
+                            ),
+                        ),
                       ),
 
-                      Text(split[0], style: const TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                            ),
-                          )
+                      Text.rich(
+                        TextSpan(text: 'Olá, ', style: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500
+                        ),
+                          children:  [
+                            TextSpan(text: '${split[0]} \n', style: const TextStyle(
+                              fontWeight: FontWeight.w900
+                            )),
+                            const TextSpan(text: 'Boa noite!', style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500
+                            ))
+                          ]
+                        )
+                      ),
+
+                      // Text(split[0], style: const TextStyle(
+                      //   fontSize: 24,
+                      //   fontWeight: FontWeight.bold,
+                      //   color: Colors.white
+                      //       ),
+                      //     )
+
                         ],
                       ),
 
@@ -61,7 +99,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: AppColors.background,
                             borderRadius: BorderRadius.all(Radius.circular(10))
                           ),
-                          child: Image.asset('assets/images/loggouticon.png', width: 30, height: 30,),
+                          child: Center(
+                            child: SizedBox(
+                              width: 40,
+                              height: 40,
+                              child: SvgPicture.asset(
+                                AppImages.logoutbutton,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ),
                       )
 
@@ -112,17 +159,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   Positioned(
                     top: 45,
-                    right: 5,
+                    right: qtd > 99 ? 2 : 5,
                     child: Container(
-                      width: 70,
+                      width: qtd > 99 ? 80 : 70,
                       height: 40,
                       decoration: const BoxDecoration(
                         color: AppColors.primary,
                         borderRadius: BorderRadius.all(Radius.circular(10))
                       ),
-                      child: const Center(child: Text('qtd. 1', style: TextStyle(
+                      child:  Center(child: Text('qtd. $qtd', style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold
                       ),)),
                     ),
@@ -149,33 +196,55 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
 
               Container(
-                height: 75,
-                width: 75,
+                height: 65,
+                width: 65,
                 decoration: const BoxDecoration(
                   color: AppColors.primary,
                   borderRadius: BorderRadius.all(Radius.circular(20))
                 ),
-                child: const Center(
-                  child: Icon(Icons.add),
+                child: Center(
+                  child: SvgPicture.asset(
+                    AppImages.addbuton,
+                    height: 40,
+                    width: 40,
+                    color: Colors.white,
+                    allowDrawingOutsideViewBox: true,
+                  )
                 ),
               ),
 
               Container(
-                height: 75,
-                width: 75,
+                height: 65,
+                width: 65,
                 decoration: const BoxDecoration(
                   color: AppColors.primary,
                   borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                child: Center(
+                  child: SvgPicture.asset(
+                    AppImages.homebutton,
+                    width: 40,
+                    height: 40,
+                    color: Colors.white,
+                  ),
                 ),
               ),
 
               Container(
-                height: 75,
-                width: 75,
+                height: 65,
+                width: 65,
                 decoration: const BoxDecoration(
                   color: AppColors.primary,
                   borderRadius: BorderRadius.all(Radius.circular(20))
                 ),
+                child: Center(
+                  child: SvgPicture.asset(
+                    AppImages.camerabutton,
+                    width: 40,
+                    height: 40,
+                    color: Colors.white,
+                  ),
+                ),                
               )
 
             ],

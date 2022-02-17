@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qrsaver/Screen/HomeScreen/home_screen.dart';
 import 'package:qrsaver/Screen/LoginScreen/login_screen.dart';
 import 'package:qrsaver/Screen/SplashScreen/splash_screen.dart';
+import 'package:qrsaver/shared/models/user_model.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
