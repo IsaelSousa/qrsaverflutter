@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qrsaver/Screen/HomeScreen/home_screen.dart';
 import 'package:qrsaver/Screen/LoginScreen/login_screen.dart';
+import 'package:qrsaver/Screen/QRCodeScannerScreen/qrcode_sacnner_screen.dart';
 import 'package:qrsaver/Screen/SplashScreen/splash_screen.dart';
 import 'package:qrsaver/shared/models/user_model.dart';
 
@@ -18,7 +19,8 @@ class AppWidget extends StatelessWidget {
       routes: {
       '/': (context) => const SplashPage(),
       '/loginscreen': (context) => const LoginScreen(),
-      '/homescreen': (context) => const HomeScreen()
+      '/homescreen': (context) => const HomeScreen(),
+      '/qrcodescannerscreen':(context) => const QRCodeScannerScreen()
       },
     );
   }

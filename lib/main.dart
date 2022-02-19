@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:qrsaver/app_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
+import 'package:qrsaver/shared/styles/app_colors.dart';
+
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      // systemNavigationBarColor: AppColors.primary,
+      statusBarColor: AppColors.primary
+    )
+  );
   runApp(const FireBaseApp());
 }
 
@@ -21,7 +30,6 @@ class _FireBaseAppState extends State<FireBaseApp> {
     return FutureBuilder(
       future: _initialization,
       builder: (context, snapshot){
-
         // Caso houver um erro com a conexão, exibira o conteúdo.
         if(snapshot.hasError){
           return const Material(
@@ -29,7 +37,6 @@ class _FireBaseAppState extends State<FireBaseApp> {
               child: Text('Não foi possível inicializar o Firebase.', textDirection: TextDirection.ltr,),
             ),
           );
-
           // Se a conexão for estabelecida, exibira o conteúdo.
         } else if (snapshot.connectionState == ConnectionState.done){
           return const AppWidget();
@@ -40,7 +47,6 @@ class _FireBaseAppState extends State<FireBaseApp> {
             ),
           );
         }
-
       },
     );
   }

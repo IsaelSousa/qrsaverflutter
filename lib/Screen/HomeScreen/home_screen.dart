@@ -22,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return SafeArea(
       child: Scaffold(
-        
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
           child: Container(
@@ -230,21 +229,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              Container(
-                height: 65,
-                width: 65,
-                decoration: const BoxDecoration(
-                  color: AppColors.primary,
-                  borderRadius: BorderRadius.all(Radius.circular(20))
-                ),
-                child: Center(
-                  child: SvgPicture.asset(
-                    AppImages.camerabutton,
-                    width: 40,
-                    height: 40,
-                    color: Colors.white,
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, '/qrcodescannerscreen');
+                },
+                child: Container(
+                  height: 65,
+                  width: 65,
+                  decoration: const BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.all(Radius.circular(20))
                   ),
-                ),                
+                  child: Center(
+                    child: SvgPicture.asset(
+                      AppImages.camerabutton,
+                      width: 40,
+                      height: 40,
+                      color: Colors.white,
+                    ),
+                  ),                
+                ),
               )
 
             ],
