@@ -7,4 +7,7 @@ class AppImages {
   static const homebutton = "assets/images/house.svg";
   static const camerabutton = "assets/images/camera.svg";
   static const logoutbutton = "assets/images/logoutbutton.svg";
+  static const repeatbutton = "assets/images/repeat.svg";
+  static const webbutton = "assets/images/webbutton.svg";
+  static const sharebutton = "assets/images/sharebutton.svg";
 }

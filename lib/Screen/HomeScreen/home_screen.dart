@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:qrsaver/shared/services/auth/auth_controller.dart';
 import 'package:qrsaver/shared/styles/app_colors.dart';
 import 'package:qrsaver/shared/styles/app_images.dart';
 
