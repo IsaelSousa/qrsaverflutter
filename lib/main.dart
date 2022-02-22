@@ -3,7 +3,6 @@ import 'package:qrsaver/app_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:qrsaver/shared/styles/app_colors.dart';
-
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(

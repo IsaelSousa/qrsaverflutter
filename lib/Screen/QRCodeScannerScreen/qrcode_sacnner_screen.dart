@@ -129,7 +129,11 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
               children: [
 
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                    controller?.resumeCamera();
+                    });
+                  },
                   child: Container(
                     width: 110,
                     height: 120,
@@ -233,6 +237,9 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
     // Read qrcode
     controller.scannedDataStream.listen((barcode){
       setState(() {
+        if (result != null) {
+          controller.pauseCamera();
+        }
         result = barcode;
       });
     });
