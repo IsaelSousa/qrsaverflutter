@@ -6,16 +6,24 @@ class QRSaverButtonsRow extends StatelessWidget {
   final String primaryTitle;
   final String primaryIcon;
   final VoidCallback primaryOnpressed;
+  final bool primaryDisable;
 
   final String secondaryTitle;
   final String secondaryIcon;
   final VoidCallback secondaryOnpressed;
+  final bool secondaryDisable;
 
   final String thirdTitle;
   final String thirdIcon;
-  final VoidCallback thirdOnpressed;  
+  final VoidCallback thirdOnpressed;
+  final bool thirdDisable;
 
-  const QRSaverButtonsRow({ Key? key, required this.primaryTitle, required this.primaryIcon, required this.primaryOnpressed, required this.secondaryTitle, required this.secondaryIcon, required this.secondaryOnpressed, required this.thirdTitle, required this.thirdIcon, required this.thirdOnpressed }) : super(key: key);
+  const QRSaverButtonsRow({ 
+    Key? key,
+    required this.primaryTitle, required this.primaryIcon, required this.primaryOnpressed, required this.primaryDisable,
+    required this.secondaryTitle, required this.secondaryIcon, required this.secondaryOnpressed, required this.secondaryDisable,
+    required this.thirdTitle, required this.thirdIcon, required this.thirdOnpressed, required this.thirdDisable,
+    }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +39,20 @@ class QRSaverButtonsRow extends StatelessWidget {
             QRSaverButton(
               title: primaryTitle,
               icon: primaryIcon,
-              onPressed: primaryOnpressed),
+              onPressed: primaryOnpressed,
+              disable: primaryDisable),
               
             QRSaverButton(
               title: secondaryTitle,
               icon: secondaryIcon,
-              onPressed: secondaryOnpressed),
+              onPressed: secondaryOnpressed,
+              disable: secondaryDisable,),
 
             QRSaverButton(
               title: thirdTitle,
               icon: thirdIcon,
-              onPressed: thirdOnpressed),            
+              onPressed: thirdOnpressed,
+              disable: thirdDisable,),            
           ],
         ),
       ),

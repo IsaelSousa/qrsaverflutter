@@ -37,9 +37,14 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
 
     if ( Platform.isAndroid ){
       await controller!.pauseCamera();
+      controller!.resumeCamera();
     }
     controller!.resumeCamera();
   }
+
+  bool scanButton = false;
+  bool openWeb = false;
+  bool shared = false;
 
   @override
   Widget build(BuildContext context) {
@@ -128,13 +133,25 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
         ),
 
         bottomNavigationBar: QRSaverButtonsRow(
-          primaryTitle: 'Scanear Novamente', primaryIcon: AppImages.repeatbutton, primaryOnpressed: (){
+          primaryTitle: 'Scanear Novamente',
+          primaryIcon: AppImages.repeatbutton,
+          primaryDisable: scanButton,
+          primaryOnpressed: (){
               controller?.resumeCamera();
           },
-          secondaryTitle: 'Abrir no navegador', secondaryIcon: AppImages.webbutton, secondaryOnpressed: (){
-            launchUrl('https://www.xvideos.com/');
+          secondaryTitle: 'Abrir no navegador',
+          secondaryIcon: AppImages.webbutton,
+          secondaryDisable: openWeb,
+          secondaryOnpressed: (){
+            // launchUrl();
+            // launchUrl("https://www.xvideos.com");
+            setState(() {});
+            urlValidator();
           },
-          thirdTitle: 'Compartilhar', thirdIcon: AppImages.sharebutton, thirdOnpressed: (){
+          thirdTitle: 'Compartilhar',
+          thirdIcon: AppImages.sharebutton,
+          thirdDisable: shared,
+          thirdOnpressed: (){
             
           },
         )
@@ -168,10 +185,35 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
     controller.scannedDataStream.listen((barcode){
       setState(() {
         if (result != null) {
-          controller.pauseCamera();
+          // controller.pauseCamera();
+          controller.resumeCamera();
         }
         result = barcode;
       });
     });
+  }
+
+  void urlValidator(){
+
+    if(result!.code == null || result!.code == '')
+    {
+      openWeb = true;
+    }
+    else
+    {
+      if(result!.code?.startsWith('https://') == true ||
+        result!.code?.startsWith('http://') == true ||
+        result!.code?.startsWith('www.') == true)
+      {
+
+        launchUrl(result!.code);
+        openWeb = false;
+
+      } else {
+
+        openWeb = true;
+      
+      }
+    }
   }
 }
